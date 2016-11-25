@@ -25,6 +25,12 @@ const colorCold = "#0000FF";
 const colorHot = "#FF0000";
 const colorRange = 100;
 
+// Off color. Full black turns off the strip.
+const ledOffColor = "000000";
+
+// Threshold for keeping strip 'on'. Define what percentage of the lux range will keep the strip turned on.
+const luxThreshold = 0.5;
+
 const urls = [
     `https://us.wio.seeed.io/v1/node/GroveDigitalLightI2C0/lux?access_token=${accessToken}`,
     `https://us.wio.seeed.io/v1/node/GroveTempHumD2/temperature_f?access_token=${accessToken}`
@@ -55,27 +61,35 @@ exports.handler = (event, context, callback) => {
 
         // Using the defined range and reported lux, determine a relative brightness reported by the sensor as a value
         // between 0 and 1 with 0 indicating a dark room and 1 indicating the most lit value of the room.
-        const brightness = (luxRange - clamp(lux, luxMin, luxMax) - luxMin) / luxRange;
+        const brightness = 1 - ((luxRange - clamp(lux, luxMin, luxMax) - luxMin) / luxRange);
 
-        // Create the color gradient
-        //noinspection JSUnresolvedFunction
-        const gradientHsv = tinyGradient([colorCold, colorHot])
-            .hsv(colorRange, true);
+        // Turn off the strip if the room is too bright
+        let temperatureColor = ledOffColor;
+        if (brightness <= luxThreshold) {
+            // Create the color gradient
+            //noinspection JSUnresolvedFunction
+            const gradientHsv = tinyGradient([colorCold, colorHot])
+                .hsv(colorRange, true);
 
-        // Get the current color
-        const tempRatio = (tempMax - tempF) / tempRange;
-        const temperature = Math.floor((1.0 - tempRatio) * colorRange) - 1;
-        //noinspection JSUnresolvedFunction
-        const temperatureColor = gradientHsv[temperature]
-            .darken(Math.floor(brightness * -20))
-            .toHex();
+            // Get the current color
+            const tempRatio = (tempMax - tempF) / tempRange;
+            const temperature = Math.floor((1.0 - tempRatio) * colorRange) - 1;
+            //noinspection JSUnresolvedFunction
+            temperatureColor = gradientHsv[temperature]
+                .darken(Math.floor(brightness * 100 * luxThreshold))
+                .toHex();
+        }
 
+        setLights(ledCount, temperatureColor, accessToken);
+    });
+
+    function setLights(ledCount, temperatureColor, accessToken) {
         const url = `https://us.wio.seeed.io/v1/node/GroveLedWs2812D0/clear/${ledCount}/${temperatureColor}?access_token=${accessToken}`;
 
         httpPost(url, function (err, res) {
             callback(err, res);
         });
-    });
+    }
 };
 
 function httpPost(url, callback) {
