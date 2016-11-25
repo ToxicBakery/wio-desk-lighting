@@ -9,12 +9,14 @@
   "author": "Ian Thomas",
   "license": "Apache-2.0",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/ToxicBakery/wio-desk-lighting.git"
+    "type" : "git",
+    "ur": "https://github.com/ToxicBakery/wio-desk-lighting.git"
   },
-  "devDependencies": {
+  "dependencies": {
+    "gulp": "^3.9.1",
     "gulp-awslambda": "^0.4.0",
     "gulp-zip": "^3.2.0",
-    "gulp-clean": "^0.3.2"
+    "gulp-clean": "^0.3.2",
+    "gulp-install": "^0.6.0"
   }
 }
