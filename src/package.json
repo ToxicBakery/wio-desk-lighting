@@ -9,5 +9,10 @@
   "author": "Ian Thomas",
   "license": "Apache-2.0",
   "devDependencies": {
+  },
+  "dependencies": {
+    "tinygradient": "latest",
+    "request": "latest",
+    "async": "latest"
   }
 }
