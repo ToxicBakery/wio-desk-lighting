@@ -17,7 +17,7 @@ const luxRange = luxMax - luxMin;
 
 // Temp value range
 const tempMin = 74;
-const tempMax = 80;
+const tempMax = 77;
 const tempRange = tempMax - tempMin;
 
 // Target colors
