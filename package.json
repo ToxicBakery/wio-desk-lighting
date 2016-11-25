@@ -1,0 +1,14 @@
+{
+  "name": "lambda-set-lights-function",
+  "version": "1.0.0",
+  "description": "Lambda function for monitoring Wio Link sensors and manipulating an LED light based on their values.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ian Thomas",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "gulp-awslambda": "^0.4.0"
+  }
+}
