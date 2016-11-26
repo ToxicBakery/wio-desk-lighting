@@ -18,3 +18,12 @@ To deploy to AWS, simply run gulp. The `src` directory will be copied to `dest`,
 ## Configuration
 By default the project is setup to use the light and temperature sensors to determine a color to display on the LED strip. The light sensor is used to determine the brightness of the strip while the temperature sensor is used to manipulate how blue or red the strip is. Red indicates the temperature sensor is reading hot while blue is cool. This functionality can be modified in constants of the [index.js](src/index.js) script.
 
+## Sample
+Cool temperature reading  
+![cold](https://cloud.githubusercontent.com/assets/1614281/20637029/d15b3704-b347-11e6-9c61-73200f78238c.jpg)
+
+Medium temperature reading  
+![hot](https://cloud.githubusercontent.com/assets/1614281/20637030/d16571a6-b347-11e6-93ce-5ffd6ce78786.jpg)
+
+Hot temperature reading  
+![mid](https://cloud.githubusercontent.com/assets/1614281/20637031/d16bb4b2-b347-11e6-88fa-58dd10f8017e.jpg)
