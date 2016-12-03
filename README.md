@@ -23,7 +23,7 @@ Cool temperature reading
 ![cold](https://cloud.githubusercontent.com/assets/1614281/20637029/d15b3704-b347-11e6-9c61-73200f78238c.jpg)
 
 Medium temperature reading  
-![hot](https://cloud.githubusercontent.com/assets/1614281/20637030/d16571a6-b347-11e6-93ce-5ffd6ce78786.jpg)
+![mid](https://cloud.githubusercontent.com/assets/1614281/20637031/d16bb4b2-b347-11e6-88fa-58dd10f8017e.jpg)
 
 Hot temperature reading  
-![mid](https://cloud.githubusercontent.com/assets/1614281/20637031/d16bb4b2-b347-11e6-88fa-58dd10f8017e.jpg)
+![hot](https://cloud.githubusercontent.com/assets/1614281/20637030/d16571a6-b347-11e6-93ce-5ffd6ce78786.jpg)
